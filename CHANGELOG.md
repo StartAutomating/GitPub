@@ -1,3 +1,16 @@
+## GitPub 0.1.1
+
+* Fixing GitHub Action Issues:
+  * TargetBranch was not pushing upstream (#21)
+  * Action Required Different Name from Repo (#22)
+* Publish-GitPub fixes:
+  * Publish parameters now correctly mapped (#20)
+* Publish-GitPubJekyll:
+  * Inlcuding .PostTitle in FrontMatter (#18)
+* Selfhosting Action (#19)
+
+---
+
 ## GitPub 0.1
 
 Introducing GitPub: Easily Automate Publishing from GitHub
