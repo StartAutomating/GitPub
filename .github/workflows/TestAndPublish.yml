@@ -525,6 +525,9 @@ jobs:
       - name: Use PSSVG Action
         uses: StartAutomating/PSSVG@main
         id: PSSVG
+      - name: Use GitPub Action
+        uses: StartAutomating/GitPub@main
+        id: GitPub
       - name: BuildPipeScript
         uses: StartAutomating/PipeScript@main
       - name: UseEZOut
