@@ -36,7 +36,12 @@ function Publish-GitPub {
                         $sourceParam = $sourceParamDict
                     }
                     
-                    & $source @sourceParam
+                    try {
+                        & $source @sourceParam
+                    } catch {
+                        $err = $_
+                        Write-Error "Could not run source '$source': $($err.Message)"                        
+                    }
                 }
             }
             
@@ -53,7 +58,12 @@ function Publish-GitPub {
                     $publishParam = $sourceParamDict
                 }
                 $wasPublished = $true
-                $gitPubSourceInfo | & $publisher @publishParam
+                try {
+                    $gitPubSourceInfo | & $publisher @publishParam
+                } catch {
+                    Write-Error "Could not run publisher '$publisher': $($err.Message)"
+                }
+                
             }
         }
         if (-not $wasPublished) {
