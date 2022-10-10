@@ -1,3 +1,7 @@
+<div align='center'>
+<img src='assets/GitPub.svg' />
+</div>
+
 # Introducing GitPub
 
 GitPub is a GitHub Action and PowerShell Module that helps Easily Automate Publishing from GitHub.
