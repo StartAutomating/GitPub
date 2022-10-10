@@ -18,6 +18,7 @@ on:
     - unlocked
     - milestoned
     - demilestoned
+  workflow_dispatch: 
 jobs: 
   RunGitPub: 
     runs-on: ubuntu-latest
