@@ -51,11 +51,11 @@ jobs:
           PublishParameters: |
             {
                 "Get-GitPubIssue": {
-                    "UserName": "`${{github.repository_owner}}",
+                    "UserName": '${{github.repository_owner}}',
                     "Repository": "GitPub"
                 },
                 "Get-GitPubRelease": {
-                    "UserName": "`${{github.repository_owner}}",
+                    "UserName": '${{github.repository_owner}}',
                     "Repository": "GitPub"
                 },
                 "Publish-GitPubJekyll": {
