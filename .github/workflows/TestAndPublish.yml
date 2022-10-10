@@ -529,6 +529,7 @@ jobs:
         uses: StartAutomating/GitPub@main
         id: GitPub
         with: 
+          PublishParameters: 
       - name: BuildPipeScript
         uses: StartAutomating/PipeScript@main
       - name: UseEZOut
