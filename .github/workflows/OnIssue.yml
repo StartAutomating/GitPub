@@ -1,4 +1,5 @@
 
+name: OnIssueChanged
 on: 
   issues: 
     types: 
@@ -31,6 +32,7 @@ jobs:
         id: GitPub
         with: 
           TargetBranch: edits-$([DateTime]::Now.ToString("o").Replace(":","-"))
+          CommitMessage: Posting with GitPub
           PublishParameters: |
             {
                 "Get-GitPubIssue": {
