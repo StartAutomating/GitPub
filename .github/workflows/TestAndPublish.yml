@@ -542,6 +542,10 @@ jobs:
                     "Repository": "GitPub",
                     "IssueState": "All"
                 },
+                "Get-GitPubRelease": {
+                    "UserName": "StartAutomating",
+                    "Repository": "GitPub"
+                },
                 "Publish-GitPubJekyll": {
                     "OutputPath": "docs/_posts"
                 }
