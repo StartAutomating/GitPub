@@ -1,7 +1,7 @@
 ﻿#requires -Module PSDevOps
 #requires -Module GitPub
 Import-BuildStep -ModuleName GitPub
-New-GitHubAction -Name "gitpub" -Description 'Easily Automate Publishing from GitHub' -Action GitPubAction -Icon rss  -ActionOutput ([Ordered]@{
+New-GitHubAction -Name "usegitpub" -Description 'Easily Automate Publishing from GitHub' -Action GitPubAction -Icon rss  -ActionOutput ([Ordered]@{
     GitPubScriptRuntime = [Ordered]@{
         description = "The time it took the .GitPubScript parameter to run"
         value = '${{steps.GitPubAction.outputs.GitPubScriptRuntime}}'

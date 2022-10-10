@@ -242,8 +242,15 @@ if ($CommitMessage -or $anyFilesChanged) {
     if (-not $LASTEXITCODE) {
         "::notice::Pulling Updates" | Out-Host
         git pull
-        "::notice::Pushing Changes" | Out-Host        
-        git push        
+        "::notice::Pushing Changes" | Out-Host
+        
+        $gitPushed = 
+            if ($TargetBranch) {
+                git push --set-upstream origin $TargetBranch
+            } else {
+                git push
+            }
+                
         "Git Push Output: $($gitPushed  | Out-String)"
     } else {
         "::notice::Not pushing changes (on detached head)" | Out-Host

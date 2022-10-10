@@ -1,5 +1,7 @@
 #requires -Module GitPub
 
+return 
+
 Publish-GitPub -Parameter @{
     "Get-GitPubIssue" = @{
         "IssueState" = "All"

@@ -18,6 +18,12 @@ function Publish-GitPub
     
     process {
         $gitPub = Get-GitPub
+
+        if ($env:GITHUB_WORKSPACE) {
+            "::group::Publish-GitPub Parameters" | Out-Host
+            $Parameter | Format-Custom | Out-Host
+            "::endgroup::" | Out-Host                        
+        }
         
         $gitPubSourceInfo = 
             foreach ($source in $gitPub.Sources) {
@@ -33,7 +39,12 @@ function Publish-GitPub
                         $sourceParam = $sourceParamDict
                     }
                     
-                    & $source @sourceParam
+                    try {
+                        & $source @sourceParam
+                    } catch {
+                        $err = $_
+                        Write-Error "Could not run source '$source': $($err.Message)"
+                    }
                 }
             }
             
@@ -47,10 +58,14 @@ function Publish-GitPub
                     foreach ($prop in $publishParam.psobject.properties) {
                         $publishParamDict[$prop.Name] = $prop.Value
                     }
-                    $publishParam = $sourceParamDict
+                    $publishParam = $publishParamDict
                 }
                 $wasPublished = $true
-                $gitPubSourceInfo | & $publisher @publishParam
+                try {
+                    $gitPubSourceInfo | & $publisher @publishParam
+                } catch {
+                    Write-Error "Could not run publisher '$publisher': $($err.Message)"
+                }                
             }
         }
 
