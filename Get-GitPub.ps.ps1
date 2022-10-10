@@ -15,26 +15,22 @@ function Get-GitPub
     param()
 
     process {
-        $sourceFunctions = 
-            (. {
-                all functions that { 
-                foreach ($attr in $this.ScriptBlock.Attributes) {                    
-                    if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and 
-                        $attr.Key -eq 'GitPub.Source') { $true; break }                    
-                }
+        $sourceFunctions =             
+            all functions that { 
+            foreach ($attr in $this.ScriptBlock.Attributes) {                    
+                if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and 
+                    $attr.Key -eq 'GitPub.Source') { $true; break }                    
             } are GitPub.Sources
-        }.Transpile())
+    
 
         $publisherFunctions = 
-            (. {
-                all functions that {                 
+            all functions that {                 
                 foreach ($attr in $this.ScriptBlock.Attributes) {                    
                     if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and 
-                        ($attr.Key -eq 'GitPub.Publish' -or 
-                        $attr.Key -eq 'GitPub.Publisher')) { $true; break }                    
+                        ($attr.Key -eq 'GitPub.Publisher')) { $true; break }                    
                 }
             } are GitPub.Publishers
-        }.Transpile())
+
 
 
         [PSCustomObject]@{
