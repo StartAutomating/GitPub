@@ -78,10 +78,12 @@ function Publish-GitPubJekyll {
         $yamlHeader = $MarkdownYamlHeader.Matches($Postbody)
         $PostBody = $MarkdownYamlHeader.Replace($Postbody,'')
 
-        $frontMatter = [Ordered]@{PSTypeName='YamlHeader'}
+        $frontMatter = [Ordered]@{PSTypeName='YamlHeader';Title= $PostTitle -replace '-', ' '}
+        
         if ($PostLayout) {
             $frontMatter['layout'] = $PostLayout
         }
+
 
         if ($PostAuthor) {
             $frontMatter['author'] = $PostAuthor
