@@ -16,20 +16,20 @@ function Get-GitPub
 
     process {
         $sourceFunctions =             
-            all functions that { 
-            foreach ($attr in $this.ScriptBlock.Attributes) {                    
-                if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and 
-                    $attr.Key -eq 'GitPub.Source') { $true; break }                    
-            } are GitPub.Sources
+all functions that { 
+    foreach ($attr in $this.ScriptBlock.Attributes) {                    
+        if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and  $attr.Key -eq 'GitPub.Source') { $true; break }
+    } 
+} are GitPub.Sources
     
 
         $publisherFunctions = 
-            all functions that {                 
-                foreach ($attr in $this.ScriptBlock.Attributes) {                    
-                    if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and 
-                        ($attr.Key -eq 'GitPub.Publisher')) { $true; break }                    
-                }
-            } are GitPub.Publishers
+all functions that {                 
+    foreach ($attr in $this.ScriptBlock.Attributes) {                    
+        if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and 
+            ($attr.Key -eq 'GitPub.Publisher')) { $true; break }
+    }
+} are GitPub.Publishers
 
 
 
