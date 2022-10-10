@@ -1,6 +1,6 @@
 ---
 
-Title: Introducing GitPub
+title: Introducing GitPub
 author: StartAutomating
 tag: enhancement
 ---
