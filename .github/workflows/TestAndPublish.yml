@@ -528,14 +528,6 @@ jobs:
       - name: Use GitPub Action
         uses: StartAutomating/GitPub@GitPub-Init
         id: GitPub
-        with: 
-          PublishParameters: 
-            GetGitPubIssue: 
-              UserName: StartAutomating
-              Repository: GitPub
-              IssueState: All
-            PublishGitPubJekyll: 
-              OutputPath: docs
       - name: BuildPipeScript
         uses: StartAutomating/PipeScript@main
       - name: UseEZOut
