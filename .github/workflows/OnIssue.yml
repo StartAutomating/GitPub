@@ -2,23 +2,6 @@
 name: OnIssueChanged
 on: 
   issues: 
-    types: 
-    - opened
-    - edited
-    - deleted
-    - transferred
-    - pinned
-    - unpinned
-    - closed
-    - reopened
-    - assigned
-    - unassigned
-    - labeled
-    - unlabeled
-    - locked
-    - unlocked
-    - milestoned
-    - demilestoned
   workflow_dispatch: 
 jobs: 
   RunGitPub: 
@@ -32,7 +15,7 @@ jobs:
         id: GitPub
         with: 
           TargetBranch: edits-$([DateTime]::Now.ToString("o").Replace(":","-"))
-          CommitMessage: Posting with GitPub
+          CommitMessage: Posting with GitPub [skip ci]
           PublishParameters: |
             {
                 "Get-GitPubIssue": {
