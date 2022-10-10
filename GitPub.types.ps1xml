@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- Generated with EZOut 1.9.6: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
+<Types>
+  <Type>
+    <Name>GitPub.Post.Gist</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Body</Name>
+        <GetScriptBlock>
+                        if (-not $this.Files) { return '' }
+if (-not $this.cachedBody) {
+    $g = $this
+    $firstFile = @(
+        foreach ($prop in $this.files.psobject.Properties) {
+            if ($prop.MemberType -eq 'ScriptProperty') { continue }        
+            $prop;break
+        }
+    ).Value
+    if ($firstFile.type -ne 'text/markdown') { return '' }
+    if (-not $firstFile.raw_url) { return '' }    
+    $bodyToCache = Invoke-RestMethod $firstFile.raw_url
+    $bodyToCache
+    $this | Add-Member NoteProperty cachedBody $bodyToCache -Force
+} else {
+    $this.cachedBody
+}
+
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>PostAuthor</Name>
+        <GetScriptBlock>
+                        if ($this.owner.type -ne 'bot') {
+    $this.owner.login
+} else {
+    ''
+}
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>PostTitle</Name>
+        <GetScriptBlock>
+                        $this.Description
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>GitPub.Post.Issue</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>PostAuthor</Name>
+        <GetScriptBlock>
+                        if ($this.user.type -ne 'bot') {
+    $this.user.login
+} else {
+    ''
+}
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>GitPub.Post.Release</Name>
+    <Members>
+      <AliasProperty>
+        <Name>Title</Name>
+        <ReferencedMemberName>Name</ReferencedMemberName>
+      </AliasProperty>
+      <ScriptProperty>
+        <Name>PostAuthor</Name>
+        <GetScriptBlock>
+                        if ($this.author.type -ne 'bot') {
+    $this.author.login
+} else {
+    ''
+}
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
