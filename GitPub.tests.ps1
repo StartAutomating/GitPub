@@ -17,13 +17,13 @@ describe GitPub {
     }
 
     it 'Can treat Gists as sources' {
-        Get-GitPubIssue -UserName StartAutomating |
+        Get-GitPubGist -UserName StartAutomating |
             Select-Object -ExpandProperty PostTitle | 
                 Should -belike '*'
     }
 
     it 'Can treat Releases as sources' {
-        Get-GitPubIssue -UserName StartAutomating -Repository PipeScript |
+        Get-GitPubRelease -UserName StartAutomating -Repository PipeScript |
             Select-Object -ExpandProperty Title | 
                 Should -belike '*'
     }
