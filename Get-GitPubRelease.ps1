@@ -1,0 +1,53 @@
+function Get-GitPubRelease {
+    <#
+    .SYNOPSIS
+        Gets GitHub Releases as Posts
+    .DESCRIPTION
+        Gets GitHub Releases as Posts.
+        The release content will be considered the body of the post.
+    #>
+    [Reflection.AssemblyMetaData("GitPub.Source",$true)]        
+    param(      
+    # The GitHub Username or Organization.      
+    [Parameter(Mandatory)]
+    [Alias('Owner')]
+    [string]
+    $UserName,
+    # The repository
+    [Parameter(Mandatory)]
+    [Alias('Repo')]
+    [string]
+    $Repository,
+    # One or more tags used for releases.
+    # By default, `release`.
+    [string[]]
+    $ReleaseTag = 'release',
+    # The GitHub Access token.
+    # If this is not provided, $env:GITHUB_TOKEN is present, $env:GITHUB_TOKEN will be used.
+    [Alias('PersonalAccessToken','GitHubPat', 'PAT')]
+    [string]
+    $GitHubAccessToken
+    )
+    process {
+        $invokeSplat = @{
+            Headers = @{}            
+        }
+        if (-not $GitHubAccessToken -and $env:GITHUB_TOKEN) {
+            $GitHubAccessToken = $env:GITHUB_TOKEN
+        }
+        if ($GitHubAccessToken) {
+            $invokeSplat.Headers.Authentication = "Bearer $gitHubAccessToken"
+        }
+        
+        $releases =
+            Invoke-RestMethod ('https://api.github.com/repos/',$UserName,'/',$repository,'/releases' -join '') @invokeSplat
+        foreach ($rel in $releases) {
+            $rel | Add-Member NoteProperty 'Tags' @($ReleaseTag) -Force
+            $rel.pstypenames.clear()
+            $rel.pstypenames.add('GitPub.Post.Release')
+            $rel.pstypenames.add('GitPub.Post')
+            $rel       
+        }
+    }
+}
+
