@@ -6,7 +6,7 @@ tag: enhancement
 ---
 # Introducing GitPub
 
-[GitPub](https://gitpub.start-automating.com/) is a GitHub Action and PowerShell Module that helps Easily Automate Publishing from GitHub.
+[GitPub](https://gitpub.start-automating.com/) is a [GitHub Action](https://github.com/marketplace/actions/usegitpub) and [PowerShell Module](https://www.powershellgallery.com/packages/GitPub/) that helps Easily Automate Publishing from GitHub.
 
 ## What does GitPub do?
 
