@@ -43,9 +43,9 @@ A source is a function that provides content to post.  GitPub comes with three s
 
 |Source|Function|Description|
 |-|-|-|
-|Gist       | Get-GitPubGist         | Turns gists into posts      |
-|Issue     | Get-GitPubIssue       | Turns issues into posts    |
-|Release | Get-GitPubRelease   | Turns releases into posts |
+|Gist       | [Get-GitPubGist](https://gitpub.start-automating.com/Get-GitPubGist)         | Turns gists into posts      |
+|Issue     | [Get-GitPubIssue](https://gitpub.start-automating.com/Get-GitPubIssue)       | Turns issues into posts    |
+|Release | [Get-GitPubRelease](https://gitpub.start-automating.com/Get-GitPubRelease)   | Turns releases into posts |
 
 ~~~PowerShell
 Get-GitPub |
