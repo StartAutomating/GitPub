@@ -1,5 +1,5 @@
 
-name: gitpub
+name: usegitpub
 description: Easily Automate Publishing from GitHub
 inputs: 
   GitPubScript: 
