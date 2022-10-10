@@ -7,8 +7,7 @@
     * Import GitPub
     * Run all *.GitPub.ps1 files beneath the workflow directory
     * Run a .GitPubScript parameter
-    * If a Formatting or Types directory is found, and an .GitPub file is not, run the output of Write-EZFormatFile
-
+    
     Any files changed can be outputted by the script, and those changes can be checked back into the repo.
     Make sure to use the "persistCredentials" option with checkout.
 #>
@@ -192,12 +191,7 @@ if ($GitPubScript) {
         Out-Host
 }
 
-if ($PublishParameters) {
-    $PublishParametersObject = ConvertFrom-Json $PublishParameters
-    $publishParameters = [Ordered]@{}
-    foreach ($prop in $PublishParametersObject.psobject.properties) {
-        $PublishParameters[$prop.Key] = $prop.Value
-    }
+if ($PublishParameters) {    
     Publish-GitPub -Parameter $PublishParameters |
         . processScriptOutput |
         Out-Host
@@ -211,7 +205,7 @@ $GitPubPS1List  = @()
 if (-not $SkipGitPubPS1) {
     $GitPubFiles = @(
     Get-ChildItem -Recurse -Path $env:GITHUB_WORKSPACE |
-        Where-Object Name -Match '\.EZ(Out|Format)\.ps1$')
+        Where-Object Name -Match '\.GitPub\.ps1$')
         
     if ($GitPubFiles) {
         $GitPubFiles|        
