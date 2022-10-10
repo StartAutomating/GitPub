@@ -31,4 +31,5 @@ $assetsPath = Join-Path $PSScriptRoot assets
     =<svg.text> -X 50% -Y 50% -TextAnchor 'middle' -DominantBaseline 'middle' -Content @(
         "gitpub"
     ) -FontFamily 'sans-serif' -Fill '#4488ff'
-) -OutputPath (Join-Path $PSScriptRoot GitPub.svg)
+) -OutputPath (Join-Path $assetsPath GitPub.svg)
+
