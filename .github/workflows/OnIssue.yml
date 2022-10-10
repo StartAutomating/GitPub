@@ -12,6 +12,7 @@ jobs:
         uses: StartAutomating/GitPub@main
         id: GitPub
         with: 
+          TargetBranch: edits-$([DateTime]::Now.ToString("o").Replace(":","-"))
           PublishParameters: |
             {
                 "Get-GitPubIssue": {
