@@ -17,6 +17,11 @@ function Publish-GitPub {
     
     process {
         $gitPub = Get-GitPub
+        if ($env:GITHUB_WORKSPACE) {
+            "::group::Publish-GitPub Parameters" | Out-Host
+            $Parameter | Format-Custom | Out-Host
+            "::endgroup::" | Out-Host                        
+        }
         
         $gitPubSourceInfo = 
             foreach ($source in $gitPub.Sources) {
