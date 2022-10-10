@@ -6,7 +6,7 @@ Publish-GitPub -Parameter @{
         "UserName"   = "StartAutomating"
         "Repository" = "GitPub"       
     }
-    "Publish-GitHubJekyll" = @{
-        OutputPath = "docs"
+    "Publish-GitPubJekyll" = @{
+        OutputPath = "docs/_posts"
     }
 }
