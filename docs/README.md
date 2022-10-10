@@ -67,3 +67,4 @@ Any function that adds `[Reflection.AssemblyMetadata('GitPub.Publisher','true')]
 
 
 
+
