@@ -6,7 +6,7 @@ tag: enhancement
 ---
 # Introducing GitPub
 
-[GitPub](https://gitpub.start-automating.com/) is a [GitHub Action](https://github.com/marketplace/actions/usegitpub) and [PowerShell Module](https://www.powershellgallery.com/packages/GitPub/) that helps Easily Automate Publishing from GitHub.
+[GitPub](https://github.com/StartAutomating/GitPub) is a [GitHub Action](https://github.com/marketplace/actions/usegitpub) and [PowerShell Module](https://www.powershellgallery.com/packages/GitPub/) that helps Easily Automate Publishing from GitHub.
 
 ## What does GitPub do?
 
@@ -58,4 +58,4 @@ A publisher is a function that finalizes content and publishes it.  GitPub comes
 
 |Source|Function|Description|
 |-|-|-|
-|Jeykll    | Publish-GitPubJeykll | Publishes content to _posts directories    |
+|Jeykll    | [Publish-GitPubJeykll](https://gitpub.start-automating.com/Publish-GitPubJeykll) | Publishes content to _posts directories    |
