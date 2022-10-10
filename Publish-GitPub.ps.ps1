@@ -43,7 +43,7 @@ function Publish-GitPub
                         & $source @sourceParam
                     } catch {
                         $err = $_
-                        Write-Error "Could not run source '$source': $($err.Message)"                        
+                        Write-Error "Could not run source '$source': $($err.Message)"
                     }
                 }
             }
@@ -58,15 +58,14 @@ function Publish-GitPub
                     foreach ($prop in $publishParam.psobject.properties) {
                         $publishParamDict[$prop.Name] = $prop.Value
                     }
-                    $publishParam = $sourceParamDict
+                    $publishParam = $publishParamDict
                 }
                 $wasPublished = $true
                 try {
                     $gitPubSourceInfo | & $publisher @publishParam
                 } catch {
                     Write-Error "Could not run publisher '$publisher': $($err.Message)"
-                }
-                
+                }                
             }
         }
 
