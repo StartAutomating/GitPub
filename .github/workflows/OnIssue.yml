@@ -1,7 +1,7 @@
 
 on: 
   issues: 
-jobs: 
+jobs:
   RunGitPub: 
     runs-on: ubuntu-latest
     if: ${{ success() }}
