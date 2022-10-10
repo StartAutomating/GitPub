@@ -65,7 +65,7 @@ function Publish-GitPubJekyll {
         $postPath = Join-Path $OutputPath "$formattedDate-$safeTitle.md"
         $yamlHeader = $MarkdownYamlHeader.Matches($Postbody)
         $PostBody = $MarkdownYamlHeader.Replace($Postbody,'')
-        $frontMatter = [Ordered]@{PSTypeName='YamlHeader';Title= $PostTitle -replace '-', ' '}
+        $frontMatter = [Ordered]@{PSTypeName='YamlHeader';title= $PostTitle -replace '-', ' '}
         
         if ($PostLayout) {
             $frontMatter['layout'] = $PostLayout
