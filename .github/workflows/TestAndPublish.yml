@@ -525,14 +525,26 @@ jobs:
       - name: Use PSSVG Action
         uses: StartAutomating/PSSVG@main
         id: PSSVG
-      - name: Use GitPub Action
-        uses: StartAutomating/GitPub@main
-        id: GitPub
       - name: BuildPipeScript
         uses: StartAutomating/PipeScript@main
       - name: UseEZOut
         uses: StartAutomating/EZOut@master
       - name: UseHelpOut
         uses: StartAutomating/HelpOut@master
+      - name: Use GitPub Action
+        uses: StartAutomating/GitPub@main
+        id: GitPub
+        with: 
+          PublishParameters: |
+            {
+                "Get-GitPubIssue": {
+                    "UserName": "StartAutomating",
+                    "Repository": "GitPub",
+                    "IssueState": "All"
+                },
+                "Publish-GitPubJekyll": {
+                    "OutputPath": "docs/_posts"
+                }
+            }
 env: 
   NoCoverage: true
