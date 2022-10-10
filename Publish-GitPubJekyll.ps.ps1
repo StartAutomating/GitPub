@@ -72,7 +72,7 @@ function Publish-GitPubJekyll {
     }
 
     process {
-        $formattedDate = $PostCreationTime.ToString("yyyy-MM-dd")
+        $formattedDate = $PostCreationTime.ToLocalTime().ToString("yyyy-MM-dd")
         $safeTitle = $Posttitle -replace '[\p{P}-[\.]]' -replace '\s', '-'
         $postPath = Join-Path $OutputPath "$formattedDate-$safeTitle.md"
         $yamlHeader = $MarkdownYamlHeader.Matches($Postbody)
