@@ -530,11 +530,11 @@ jobs:
         id: GitPub
         with: 
           PublishParameters: 
-            Get-GitPubIssue: 
+            GetGitPubIssue: 
               UserName: StartAutomating
               Repository: GitPub
               IssueState: All
-            Publish-GitPubJekyll: 
+            PublishGitPubJekyll: 
               OutputPath: docs
       - name: BuildPipeScript
         uses: StartAutomating/PipeScript@main
