@@ -12,7 +12,7 @@ tag: enhancement
 
 GitPub gives you a flexible framework for converting content (primarily from GitHub) into published content.
 
-For example, you can turn GitHub issues that match a certain label into Jeykll posts within a GitHub Page.
+For example, you can turn GitHub issues that match a certain label into [Jeykll](https://jekyllrb.com/) posts within a GitHub Page.
 
 You might be reading output from GitPub that way right now.  This post started as [this GitHub issue](https://github.com/StartAutomating/GitPub/issues/1).
 
