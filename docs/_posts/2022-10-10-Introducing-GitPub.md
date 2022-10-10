@@ -26,43 +26,10 @@ You can use GitPub as a GitHub Action or as a PowerShell Module.
 
 ### Using the GitPub action
 
-You can easily use GitPub as a GitHub action.
+You can easily use GitPub as a GitHub action.  
 
-The following workflow is used to publish GitPub whenever issues change:
+In fact, GitPub uses itself to publish whenever issues change.  See [this simple workflow for reference](https://github.com/StartAutomating/GitPub/blob/main/.github/workflows/OnIssue.yml)
 
-```yaml
-name: OnIssueChanged
-on:
-  issues:
-  workflow_dispatch:
-jobs:
-  RunGitPub:
-    runs-on: ubuntu-latest
-    if: ${{ success() }}
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Use GitPub Action
-        uses: StartAutomating/GitPub@main
-        id: GitPub
-        with:
-          TargetBranch: edits-$([DateTime]::Now.ToString("o").Replace(":","-"))
-          CommitMessage: Posting with GitPub [skip ci]
-          PublishParameters: |
-            {
-                "Get-GitPubIssue": {
-                    "UserName": '${{github.repository_owner}}',
-                    "Repository": "GitPub"
-                },
-                "Get-GitPubRelease": {
-                    "UserName": '${{github.repository_owner}}',
-                    "Repository": "GitPub"
-                },
-                "Publish-GitPubJekyll": {
-                    "OutputPath": "docs/_posts"
-                }
-            }
-```
 
 ### Using the GitPub module
 
