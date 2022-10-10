@@ -65,9 +65,9 @@ runs:
         $Parameters.CommitMessage = ${env:CommitMessage}
         $Parameters.TargetBranch = ${env:TargetBranch}
         $Parameters.PublishParameters = ${env:PublishParameters}
-        $Parameters.PublishParameters = ConvertFrom-JSON @'
-        ${{parameters.PublishParameters}}
-        '@
+        $Parameters.PublishParameters = ConvertFrom-JSON @"
+        $($Parameters.PublishParameters)
+        "@
         $Parameters.UserEmail = ${env:UserEmail}
         $Parameters.UserName = ${env:UserName}
         foreach ($k in @($parameters.Keys)) {
