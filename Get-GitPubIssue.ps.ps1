@@ -53,11 +53,11 @@ function Get-GitPubIssue
         }
 
         if ($Repository -like '*/*' -and -not $UserName) {
-            $UserName, $Repository = $Repository -split '/', 2
+            $UserName, $Repository = $Repository -split '\/', 2
         }
 
         if (-not $UserName) {
-            Write-Error "Must Provide -UserName or provide -Repository in the form username/repository"
+            Write-Error "Must Provide -UserName or provide -Repository in the form username / repository"
             return
         }
 

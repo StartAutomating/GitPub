@@ -47,7 +47,7 @@ function Get-GitPubRelease
         }
 
         if ($Repository -like '*/*' -and -not $UserName) {
-            $UserName, $Repository = $Repository -split '/', 2
+            $UserName, $Repository = $Repository -split '\/', 2
         }
 
         if (-not $UserName) {
