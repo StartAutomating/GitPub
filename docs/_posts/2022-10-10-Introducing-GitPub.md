@@ -29,8 +29,7 @@ You can use GitPub as a GitHub Action or as a PowerShell Module.
 
 You can easily use GitPub as a GitHub action.  
 
-In fact, GitPub uses itself to publish whenever issues change.  See [this simple workflow for reference](https://github.com/StartAutomating/GitPub/blob/main/.github/workflows/OnIssue.yml)
-
+In fact, GitPub uses itself to publish whenever issues change.  See [this simple workflow for reference](https://github.com/StartAutomating/GitPub/blob/main/.github/workflows/OnIssue.yml).
 
 ### Using the GitPub module
 
@@ -56,6 +55,7 @@ A source is a function that provides content to post.  GitPub comes with three s
 |Release | [Get-GitPubRelease](https://gitpub.start-automating.com/Get-GitPubRelease)   | Turns releases into posts |
 
 ~~~PowerShell
+# List all sources
 Get-GitPub |
     Select-Object -ExpandProperty Sources
 ~~~
@@ -67,3 +67,11 @@ A publisher is a function that finalizes content and publishes it.  GitPub comes
 |Source|Function|Description|
 |-|-|-|
 |Jeykll    | [Publish-GitPubJeykll](https://gitpub.start-automating.com/Publish-GitPubJeykll) | Publishes content to _posts directories    |
+
+~~~PowerShell
+# List all publishers
+Get-GitPub |
+    Select-Object -ExpandProperty Publishers
+~~~
+
+
