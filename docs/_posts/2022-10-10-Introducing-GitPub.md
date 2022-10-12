@@ -2,6 +2,7 @@
 
 title: Introducing GitPub
 author: StartAutomating
+sourceURL: https://github.com/StartAutomating/GitPub/issues/1
 tag: enhancement
 ---
 # Introducing GitPub
