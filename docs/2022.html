@@ -1,9 +1,9 @@
 ---
 permalink: /2022/
 ---
-{% for post in site.posts %}
+{% for post in site.posts %}  
   {% assign currentdate = post.date | date: "%Y" %}
-  {% if currentdate.year != "2022" %}
+  {% if currentdate != "2022" %}
     {% continue %}
   {% endif %}
   {% if currentdate != date %}
