@@ -5,6 +5,7 @@ permalink: /2022/
   {% assign currentdate = post.date | date: "%Y" %}
   {% if currentdate.year != 2022 %}
     {% continue %}
+  {% endif %}
   {% if currentdate != date %}
     <li id="y{{currentdate}}">{{ currentdate }}</li>
     {% assign date = currentdate %} 
