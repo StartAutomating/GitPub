@@ -1,5 +1,5 @@
 @{
-    ModuleVersion = '0.1.1'
+    ModuleVersion = '0.1.2'
     RootModule = 'GitPub.psm1'
     TypesToProcess = 'GitPub.types.ps1xml'
     FormatsToProcess = 'GitPub.format.ps1xml'
@@ -13,16 +13,15 @@
             ProjectURI = 'https://github.com/StartAutomating/GitPub'
             LicenseURI = 'https://github.com/StartAutomating/GitPub/blob/main/LICENSE'
             ReleaseNotes = @'
-## GitPub 0.1.1
+## GitPub 0.1.2
 
 * Fixing GitHub Action Issues:
-  * TargetBranch was not pushing upstream (#21)
-  * Action Required Different Name from Repo (#22)
-* Publish-GitPub fixes:
-  * Publish parameters now correctly mapped (#20)
+  * Will not push to TargetBranch when not on a branch (#33)
+* Get-GitPubIssue/Get-GitPubRelease:
+  * UserName is now optional (#32)
 * Publish-GitPubJekyll:
-  * Inlcuding .PostTitle in FrontMatter (#18)
-* Selfhosting Action (#19)
+  * Including SourceURL in front matter (#34)
+---
 '@
         }
     }
