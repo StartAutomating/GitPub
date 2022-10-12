@@ -245,13 +245,13 @@ if ($CommitMessage -or $anyFilesChanged) {
     $checkDetached = git symbolic-ref -q HEAD
     if (-not $LASTEXITCODE) {
         "::notice::Pulling Updates" | Out-Host
-        git pull
+        if (-not $targetBranch) { git pull }
         "::notice::Pushing Changes" | Out-Host
         
         $gitPushed = 
             if ($TargetBranch -and $anyFilesChanged) {
                 git push --set-upstream origin $TargetBranch
-            } else {
+            } elseif ($anyFilesChanged) {
                 git push
             }
                 
