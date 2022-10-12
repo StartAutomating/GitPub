@@ -12,8 +12,7 @@ function Get-GitPubIssue
     #>
     [Reflection.AssemblyMetaData("GitPub.Source",$true)]        
     param(
-    # The GitHub Username or Organization.      
-    [Parameter(Mandatory)]
+    # The GitHub Username or Organization.          
     [Alias('Owner')]
     [string]
     $UserName,
@@ -51,6 +50,15 @@ function Get-GitPubIssue
 
         if ($GitHubAccessToken) {
             $invokeSplat.Headers.Authentication = "Bearer $gitHubAccessToken"
+        }
+
+        if ($Repository -like '*/*' -and -not $UserName) {
+            $UserName, $Repository = $Repository -split '/', 2
+        }
+
+        if (-not $UserName) {
+            Write-Error "Must Provide -UserName or provide -Repository in the form username/repository"
+            return
         }
 
         $queryString = @(
