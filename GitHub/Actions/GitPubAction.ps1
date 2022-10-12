@@ -156,6 +156,7 @@ $ActionModulePath, $ActionModule =
 
 #region Declare Functions and Variables
 $anyFilesChanged = $false
+$fileChangeCount = 0
 filter ProcessScriptOutput {
     $out = $_
     $outItem = Get-Item -Path $out -ErrorAction SilentlyContinue
@@ -175,6 +176,7 @@ filter ProcessScriptOutput {
             git commit -m "$($gitHubEvent.head_commit.message)"
         }
         $anyFilesChanged = $true
+        $fileChangeCount++
     }
     $out
 }
@@ -237,6 +239,8 @@ if ($CommitMessage -or $anyFilesChanged) {
 
         git commit -m $ExecutionContext.SessionState.InvokeCommand.ExpandString($CommitMessage)
     }    
+    
+    
 
     $checkDetached = git symbolic-ref -q HEAD
     if (-not $LASTEXITCODE) {
@@ -245,7 +249,7 @@ if ($CommitMessage -or $anyFilesChanged) {
         "::notice::Pushing Changes" | Out-Host
         
         $gitPushed = 
-            if ($TargetBranch) {
+            if ($TargetBranch -and $anyFilesChanged) {
                 git push --set-upstream origin $TargetBranch
             } else {
                 git push

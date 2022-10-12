@@ -20,7 +20,7 @@ The GitHub Username or Organization.
 
 > **Type**: ```[String]```
 
-> **Required**: true
+> **Required**: false
 
 > **Position**: 1
 
@@ -84,7 +84,7 @@ If this is not provided, $env:GITHUB_TOKEN is present, $env:GITHUB_TOKEN will be
 ---
 ### Syntax
 ```PowerShell
-Get-GitPubRelease [-UserName] <String> [-Repository] <String> [[-ReleaseTag] <String[]>] [[-GitHubAccessToken] <String>] [<CommonParameters>]
+Get-GitPubRelease [[-UserName] <String>] [-Repository] <String> [[-ReleaseTag] <String[]>] [[-GitHubAccessToken] <String>] [<CommonParameters>]
 ```
 ---
 

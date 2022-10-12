@@ -1,3 +1,14 @@
+## GitPub 0.1.2
+
+* Fixing GitHub Action Issues:
+  * Will not push to TargetBranch when not on a branch (#33)
+* Get-GitPubIssue/Get-GitPubRelease:
+  * UserName is now optional (#32)
+* Publish-GitPubJekyll:
+  * Including SourceURL in front matter (#34)
+
+---
+
 ## GitPub 0.1.1
 
 * Fixing GitHub Action Issues:

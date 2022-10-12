@@ -131,6 +131,23 @@ The layout used for a post.
 
 
 ---
+#### **SourceUrl**
+
+The source URL.  If provided, this will be included in front matter.
+
+
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 7
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
+---
 #### **OutputPath**
 
 The output path.  If not provided, will output to _posts in the current directory.
@@ -141,7 +158,7 @@ The output path.  If not provided, will output to _posts in the current director
 
 > **Required**: false
 
-> **Position**: 7
+> **Position**: 8
 
 > **PipelineInput**:false
 
@@ -150,7 +167,7 @@ The output path.  If not provided, will output to _posts in the current director
 ---
 ### Syntax
 ```PowerShell
-Publish-GitPubJekyll [-PostTitle] <String> [-PostBody] <String> [-PostCreationTime] <DateTime> [[-PostAuthor] <String>] [[-PostTag] <String[]>] [[-PostLayout] <String>] [[-OutputPath] <String>] [<CommonParameters>]
+Publish-GitPubJekyll [-PostTitle] <String> [-PostBody] <String> [-PostCreationTime] <DateTime> [[-PostAuthor] <String>] [[-PostTag] <String[]>] [[-PostLayout] <String>] [[-SourceUrl] <String>] [[-OutputPath] <String>] [<CommonParameters>]
 ```
 ---
 

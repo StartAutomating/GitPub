@@ -28,7 +28,7 @@ The GitHub Username or Organization.
 
 > **Type**: ```[String]```
 
-> **Required**: true
+> **Required**: false
 
 > **Position**: 1
 
@@ -116,7 +116,7 @@ If this is not provided, $env:GITHUB_TOKEN is present, $env:GITHUB_TOKEN will be
 ---
 ### Syntax
 ```PowerShell
-Get-GitPubIssue [-UserName] <String> [-Repository] <String> [[-IssueState] <String>] [[-IssueLabel] <String[]>] [[-GitHubAccessToken] <String>] [<CommonParameters>]
+Get-GitPubIssue [[-UserName] <String>] [-Repository] <String> [[-IssueState] <String>] [[-IssueLabel] <String[]>] [[-GitHubAccessToken] <String>] [<CommonParameters>]
 ```
 ---
 
