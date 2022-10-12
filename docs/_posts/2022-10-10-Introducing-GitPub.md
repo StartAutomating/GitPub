@@ -74,4 +74,6 @@ Get-GitPub |
     Select-Object -ExpandProperty Publishers
 ~~~
 
+Hopefully, as GitPub grows, these lists will grow with it.
+
 
