@@ -48,6 +48,14 @@ function Publish-GitPubJekyll {
     [string]
     $PostLayout,
 
+    # The source URL.  If provided, this will be included in front matter.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Alias('HTML_url')]
+    [string]
+    $SourceUrl,
+
+
+
     # The output path.  If not provided, will output to _posts in the current directory.
     [string]
     $OutputPath    
@@ -87,6 +95,10 @@ function Publish-GitPubJekyll {
 
         if ($PostAuthor) {
             $frontMatter['author'] = $PostAuthor
+        }
+
+        if ($SourceUrl) {
+            $frontMatter['sourceURL'] = $SourceUrl
         }
 
         if ($PostTag) {
