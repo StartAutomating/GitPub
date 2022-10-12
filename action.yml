@@ -50,13 +50,13 @@ runs:
       id: GitPubAction
       shell: pwsh
       env: 
-        CommitMessage: ${{inputs.CommitMessage}}
-        PublishParameters: ${{inputs.PublishParameters}}
         UserName: ${{inputs.UserName}}
+        GitPubScript: ${{inputs.GitPubScript}}
+        PublishParameters: ${{inputs.PublishParameters}}
         TargetBranch: ${{inputs.TargetBranch}}
         SkipGitPubPS1: ${{inputs.SkipGitPubPS1}}
-        GitPubScript: ${{inputs.GitPubScript}}
         UserEmail: ${{inputs.UserEmail}}
+        CommitMessage: ${{inputs.CommitMessage}}
       run: |
         $Parameters = @{}
         $Parameters.GitPubScript = ${env:GitPubScript}
@@ -234,6 +234,7 @@ runs:
         
         #region Declare Functions and Variables
         $anyFilesChanged = $false
+        $fileChangeCount = 0
         filter ProcessScriptOutput {
             $out = $_
             $outItem = Get-Item -Path $out -ErrorAction SilentlyContinue
@@ -253,6 +254,7 @@ runs:
                     git commit -m "$($gitHubEvent.head_commit.message)"
                 }
                 $anyFilesChanged = $true
+                $fileChangeCount++
             }
             $out
         }
@@ -315,6 +317,8 @@ runs:
         
                 git commit -m $ExecutionContext.SessionState.InvokeCommand.ExpandString($CommitMessage)
             }    
+            
+            
         
             $checkDetached = git symbolic-ref -q HEAD
             if (-not $LASTEXITCODE) {
@@ -323,7 +327,7 @@ runs:
                 "::notice::Pushing Changes" | Out-Host
                 
                 $gitPushed = 
-                    if ($TargetBranch) {
+                    if ($TargetBranch -and $anyFilesChanged) {
                         git push --set-upstream origin $TargetBranch
                     } else {
                         git push
