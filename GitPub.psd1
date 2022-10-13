@@ -1,5 +1,5 @@
 @{
-    ModuleVersion = '0.1.2'
+    ModuleVersion = '0.1.3'
     RootModule = 'GitPub.psm1'
     TypesToProcess = 'GitPub.types.ps1xml'
     FormatsToProcess = 'GitPub.format.ps1xml'
@@ -13,15 +13,10 @@
             ProjectURI = 'https://github.com/StartAutomating/GitPub'
             LicenseURI = 'https://github.com/StartAutomating/GitPub/blob/main/LICENSE'
             ReleaseNotes = @'
-## GitPub 0.1.2
+## GitPub 0.1.3
 
-* Fixing GitHub Action Issues:
-  * Will not push to TargetBranch when not on a branch (#33)
-* Get-GitPubIssue/Get-GitPubRelease:
-  * UserName is now optional (#32)
-* Publish-GitPubJekyll:
-  * Including SourceURL in front matter (#34)
----
+* Publish-GitPubJekyll will generate summary pages unless -NoSummary is passed.
+* GitPub's GitHub Page Now Uses Permalink: pretty
 '@
         }
     }

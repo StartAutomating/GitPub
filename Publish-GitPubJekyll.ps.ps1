@@ -54,8 +54,93 @@ function Publish-GitPubJekyll {
     [string]
     $SourceUrl,
 
+    # If not set, will summarize all posts in a given year, month, and day.
+    # This will generate a file for each unique year, year/month, day combination
+    # and will give them the appropriate permalinks.
+    [switch]
+    $NoSummary,
 
+    # The content used for a yearly summary
+    [Alias('AnnualSummary')]
+    [string]
+    $YearlySummary = @'
+---
+permalink: /$Year/
+---
+{% assign currentYear = "$Year" %}
+{% for post in site.posts %}  
+    {% assign postYear = post.date | date: "%Y" %}
+    {% assign postYearMonth = post.date | date: "[%B](%m) %Y" %}
+    {% if postYear != currentYear %}
+        {% continue %}
+    {% endif %}
+    {% if hasDisplayedYear != postYear %}
+## [{{postYear}}](.)    
+    {% endif %}
+    {% assign hasDisplayedYear = postYear %}
 
+    {% if hasDisplayedYearMonth != postYearMonth %}
+### {{postYearMonth}}    
+    {% endif %}
+    {% assign hasDisplayedYearMonth = postYearMonth %} 
+* [ {{ post.title }} ]( {{ post.url }} )
+{% endfor %}
+'@,
+
+    [ValidateSet('md','html')]
+    [Alias('YearlySummaryFormat','AnnualSummaryFormat', 'AnnualSummaryExtension')]
+    [string]
+    $YearlySummaryExtension = 'md',
+
+    [Alias('MonthSummary')]
+    [string]
+    $MonthlySummary = @'
+---
+permalink: /$Year/$Month/
+---
+{% assign currentYearMonth = "$Year $Month" %}
+{% for post in site.posts %}  
+    {% assign postYear = post.date | date: "%Y" %}
+    {% assign postYearMonth = post.date | date: "%B [%Y](..)" %}
+    {% assign postYM = post.date | date: "%Y %m" %}
+    {% if postYM != currentYearMonth %}
+        {% continue %}
+    {% endif %}
+    {% if hasDisplayedYearMonth != postYearMonth %}
+## {{postYearMonth}}    
+    {% endif %}
+    {% assign hasDisplayedYearMonth = postYearMonth %} 
+* [ {{ post.title }} ]( {{ post.url }} )
+{% endfor %}    
+'@,
+
+    [Alias('MonthlySummaryFormat', 'MonthSummaryFormat','MonthSummaryExtension')]
+    [string]
+    $MonthlySummaryExtension = 'md',
+
+    [string]
+    $DailySummary = @'
+---
+permalink: /$Year/$Month/$Day/
+---
+{% for post in site.posts %}  
+    {% assign currentdate = post.date | date: "%Y %m %d" %}
+    {% assign friendlydate = post.date | date: "[%B](..) [%d](.) [%Y](../..)" %}
+    {% if currentdate != "$Year $Month $Day" %}
+        {% continue %}
+    {% endif %}
+    {% if currentdate != date %}
+## {{friendlydate}}
+    {% assign date = currentdate %} 
+    {% endif %}
+* [ {{ post.title }} ]( {{ post.url }} )
+{% endfor %}
+'@,
+
+    [Alias('DailySummaryFormat', 'DaySummaryFormat', 'DaySummaryExtension')]
+    [string]
+    $DailySummaryExtension = 'md',
+    
     # The output path.  If not provided, will output to _posts in the current directory.
     [string]
     $OutputPath    
@@ -116,5 +201,44 @@ function Publish-GitPubJekyll {
 
         $PostBody | Set-Content -LiteralPath $postPath -Encoding utf8
         Get-Item -LiteralPath $postPath
+    }
+
+    end {
+        if ($NoSummary) { return }
+        $foundPosts = Get-ChildItem -Path $OutputPath -Filter "????-??-??*"
+        $outputParentPath = Split-Path $OutputPath
+        $summaryFiles = @{}
+        foreach ($postFound in $foundPosts) {
+            $postFoundDate = $postFound.Name.Substring(0,10) -as [DateTime]
+            $year  = $postFoundDate.ToString("yyyy")
+            $month = $postFoundDate.ToString("MM")
+            $day = $postFoundDate.ToString("dd")
+
+            foreach ($summaryName in 'Yearly','Monthly','Daily') {
+                $summaryContent   = $ExecutionContext.SessionState.PSVariable.Get("${summaryName}Summary").Value
+                $summaryExtension = $ExecutionContext.SessionState.PSVariable.Get("${summaryName}SummaryExtension").Value.ToLower()
+                $summaryFilePath  = 
+                    switch ($summaryName) {
+                        Yearly {
+                            Join-Path $outputParentPath "$year.$SummaryExtension"
+                        }
+                        Monthly {
+                            Join-Path $outputParentPath "$year-$month.$SummaryExtension"
+                        }
+                        Daily {
+                            Join-Path $outputParentPath "$year-$month-$day.$SummaryExtension"
+                        }
+                    }
+
+                if ($summaryFiles["$summaryFilePath"]) { continue }
+
+                $ExecutionContext.SessionState.InvokeCommand.ExpandString($summaryContent) |
+                    Set-Content $summaryFilePath -Encoding UTF8                    
+                $summaryFiles["$summaryFilePath"] = Get-Item $summaryFilePath
+                $summaryFiles["$summaryFilePath"]
+            }
+            
+        }
+
     }
 }

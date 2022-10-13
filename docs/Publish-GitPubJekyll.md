@@ -148,9 +148,28 @@ The source URL.  If provided, this will be included in front matter.
 
 
 ---
-#### **OutputPath**
+#### **NoSummary**
 
-The output path.  If not provided, will output to _posts in the current directory.
+If not set, will summarize all posts in a given year, month, and day.
+This will generate a file for each unique year, year/month, day combination
+and will give them the appropriate permalinks.
+
+
+
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
+---
+#### **YearlySummary**
+
+The content used for a yearly summary
 
 
 
@@ -165,9 +184,98 @@ The output path.  If not provided, will output to _posts in the current director
 
 
 ---
+#### **YearlySummaryExtension**
+
+Valid Values:
+
+* md
+* html
+
+
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 9
+
+> **PipelineInput**:false
+
+
+
+---
+#### **MonthlySummary**
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 10
+
+> **PipelineInput**:false
+
+
+
+---
+#### **MonthlySummaryExtension**
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 11
+
+> **PipelineInput**:false
+
+
+
+---
+#### **DailySummary**
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 12
+
+> **PipelineInput**:false
+
+
+
+---
+#### **DailySummaryExtension**
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 13
+
+> **PipelineInput**:false
+
+
+
+---
+#### **OutputPath**
+
+The output path.  If not provided, will output to _posts in the current directory.
+
+
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 14
+
+> **PipelineInput**:false
+
+
+
+---
 ### Syntax
 ```PowerShell
-Publish-GitPubJekyll [-PostTitle] <String> [-PostBody] <String> [-PostCreationTime] <DateTime> [[-PostAuthor] <String>] [[-PostTag] <String[]>] [[-PostLayout] <String>] [[-SourceUrl] <String>] [[-OutputPath] <String>] [<CommonParameters>]
+Publish-GitPubJekyll [-PostTitle] <String> [-PostBody] <String> [-PostCreationTime] <DateTime> [[-PostAuthor] <String>] [[-PostTag] <String[]>] [[-PostLayout] <String>] [[-SourceUrl] <String>] [-NoSummary] [[-YearlySummary] <String>] [[-YearlySummaryExtension] <String>] [[-MonthlySummary] <String>] [[-MonthlySummaryExtension] <String>] [[-DailySummary] <String>] [[-DailySummaryExtension] <String>] [[-OutputPath] <String>] [<CommonParameters>]
 ```
 ---
 
