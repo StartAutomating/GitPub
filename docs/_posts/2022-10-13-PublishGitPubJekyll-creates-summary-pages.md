@@ -5,6 +5,8 @@ author: StartAutomating
 sourceURL: https://github.com/StartAutomating/GitPub/issues/42
 tag: enhancement
 ---
+# Publish-GitPubJekyll creates summary pages
+
 Jekyll's great, and yet it doesn't do _everything_ right.
 
 One thing that's annoying out of the box is the fact that a Jekyll site does not have a summary page for posts in a given year, month, or day.
