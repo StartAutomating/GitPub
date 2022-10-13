@@ -1,3 +1,11 @@
+## GitPub 0.1.3
+
+* Publish-GitPubJekyll will generate summary pages unless -NoSummary is passed.
+* GitPub's GitHub Page Now Uses Permalink: pretty
+
+---
+
+
 ## GitPub 0.1.2
 
 * Fixing GitHub Action Issues:
