@@ -50,4 +50,4 @@ To prove things are working as they should, here are some live examples on GitPu
 * [all posts in October 2022](https://gitpub.start-automating.com/2022/10)
 * [all posts on October 10th, 2022](https://gitpub.start-automating.com/2022/10/10)
 
-Happy Posting
+Happy Posting and Hope this Helps
