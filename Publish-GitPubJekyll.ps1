@@ -146,7 +146,7 @@ permalink: /$Year/$Month/$Day/
     }
     process {
         $formattedDate = $PostCreationTime.ToLocalTime().ToString("yyyy-MM-dd")
-        $safeTitle = $Posttitle -replace '[\p{P}-[\.]]' -replace '\s', '-'
+        $safeTitle = $PostTitle -replace '[\\/\<\>\:"\|\?\*]' -replace '\s', '-'
         $postPath = Join-Path $OutputPath "$formattedDate-$safeTitle.md"
         $yamlHeader = $MarkdownYamlHeader.Matches($Postbody)
         $PostBody = $MarkdownYamlHeader.Replace($Postbody,'')
