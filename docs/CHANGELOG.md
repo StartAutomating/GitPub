@@ -1,3 +1,16 @@
+## GitPub 0.1.4
+
+* Publish-GitPub: Improved publishing error behavior (Fixes #48)
+* Get-GitPubIssue/Get-GitPubRelease:  Linking issues (Fixes #47)
+* Publish-GitPubJekyll:
+  * Improving Date Handling (Fixes #51)
+  * Allowing more filenames (Fixes #52)
+* Providing RunGitPub Job Definition (Fixes #53)
+
+
+---
+
+
 ## GitPub 0.1.3
 
 * Publish-GitPubJekyll will generate summary pages unless -NoSummary is passed.
