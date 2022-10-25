@@ -64,8 +64,9 @@ function Publish-GitPub
                 try {
                     $gitPubSourceInfo | & $publisher @publishParam
                 } catch {
-                    Write-Error "Could not run publisher '$publisher': $($err.Message)"
-                }                
+                    $err = $_
+                    Write-Error "Could not run publisher '$publisher': $($err.Message) @ $($err.ScriptStackTrace)"
+                }               
             }
         }
 
