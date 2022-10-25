@@ -209,11 +209,14 @@ permalink: /$Year/$Month/$Day/
         $outputParentPath = Split-Path $OutputPath
         $summaryFiles = @{}
         foreach ($postFound in $foundPosts) {
-            $postFoundDate = $postFound.Name.Substring(0,10) -as [DateTime]
+            $postFoundDate = (@($postFound.Name -split '-',4)[0..3] -join '-') -as [DateTime]
+            if (-not $postFoundDate) {
+                continue                
+            }
             $year  = $postFoundDate.ToString("yyyy")
             $month = $postFoundDate.ToString("MM")
             $day = $postFoundDate.ToString("dd")
-
+            
             foreach ($summaryName in 'Yearly','Monthly','Daily') {
                 $summaryContent   = $ExecutionContext.SessionState.PSVariable.Get("${summaryName}Summary").Value
                 $summaryExtension = $ExecutionContext.SessionState.PSVariable.Get("${summaryName}SummaryExtension").Value.ToLower()
