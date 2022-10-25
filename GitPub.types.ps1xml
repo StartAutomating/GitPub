@@ -60,6 +60,25 @@ if (-not $this.cachedBody) {
 }
                     </GetScriptBlock>
       </ScriptProperty>
+      <ScriptProperty>
+        <Name>PostBody</Name>
+        <GetScriptBlock>
+                        $hasReferences = $this.Body -match '\#\d+'
+
+if (-not $hasReferences) { return $this.Body }
+
+$repoRoot = $this.html_url -replace '\/issues.+$'
+
+[Regex]::Replace($this.Body, "\#(?&lt;i&gt;\d+)", {
+    param($match)
+    "[#$($match.Groups['i'].Value)]($repoRoot/issues/$(
+        $match.Groups['i'].Value
+    ))"
+})
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
     </Members>
   </Type>
   <Type>
@@ -77,6 +96,25 @@ if (-not $this.cachedBody) {
 } else {
     ''
 }
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>PostBody</Name>
+        <GetScriptBlock>
+                        $hasReferences = $this.Body -match '\#\d+'
+
+if (-not $hasReferences) { return $this.Body }
+
+$repoRoot = $this.html_url -replace '\/releases.+$'
+
+[Regex]::Replace($this.Body, "\#(?&lt;i&gt;\d+)", {
+    param($match)
+    "[#$($match.Groups['i'].Value)]($repoRoot/issues/$(
+        $match.Groups['i'].Value
+    ))"
+})
+
+
                     </GetScriptBlock>
       </ScriptProperty>
     </Members>
