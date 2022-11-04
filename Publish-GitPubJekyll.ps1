@@ -178,11 +178,11 @@ permalink: /$Year/$Month/$Day/
     }
     end {
         if ($NoSummary) { return }
-        $foundPosts = Get-ChildItem -Path $OutputPath -Filter "????-??-??*"
+        $foundPosts = Get-ChildItem -Path $OutputPath -Filter "*.md"
         $outputParentPath = Split-Path $OutputPath
         $summaryFiles = @{}
         foreach ($postFound in $foundPosts) {
-            $postFoundDate = (@($postFound.Name -split '-',4)[0..3] -join '-') -as [DateTime]
+            $postFoundDate = (@($postFound.Name -split '-',4)[0..2] -join '-') -as [DateTime]
             if (-not $postFoundDate) {
                 continue                
             }
