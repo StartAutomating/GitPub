@@ -1,4 +1,3 @@
-
 Get-GitPub
 ----------
 ### Synopsis
@@ -30,5 +29,3 @@ Get-GitPub
 Get-GitPub [<CommonParameters>]
 ```
 ---
-
-

@@ -1,4 +1,3 @@
-
 Get-GitPubGist
 --------------
 ### Synopsis
@@ -58,5 +57,3 @@ If this is not provided, $env:GITHUB_TOKEN is present, $env:GITHUB_TOKEN will be
 Get-GitPubGist [-UserName] <String> [[-GitHubAccessToken] <String>] [<CommonParameters>]
 ```
 ---
-
-
