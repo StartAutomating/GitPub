@@ -1,4 +1,3 @@
-
 Publish-GitPub
 --------------
 ### Synopsis
@@ -42,5 +41,3 @@ Publish-GitPub
 Publish-GitPub [[-Parameter] <Object>] [<CommonParameters>]
 ```
 ---
-
-
