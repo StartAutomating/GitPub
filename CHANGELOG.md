@@ -1,3 +1,11 @@
+## GitPub 0.1.5:
+
+* Publish-GitPubJekyll:
+  * Adding RSS Feed (Fixes #57)
+  * Fixing Summaries (Fixes #56)
+
+---
+
 ## GitPub 0.1.4
 
 * Publish-GitPub: Improved publishing error behavior (Fixes #48)
@@ -6,7 +14,6 @@
   * Improving Date Handling (Fixes #51)
   * Allowing more filenames (Fixes #52)
 * Providing RunGitPub Job Definition (Fixes #53)
-
 
 ---
 

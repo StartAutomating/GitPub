@@ -1,5 +1,5 @@
 @{
-    ModuleVersion = '0.1.4'
+    ModuleVersion = '0.1.5'
     RootModule = 'GitPub.psm1'
     TypesToProcess = 'GitPub.types.ps1xml'
     FormatsToProcess = 'GitPub.format.ps1xml'
@@ -13,14 +13,13 @@
             ProjectURI = 'https://github.com/StartAutomating/GitPub'
             LicenseURI = 'https://github.com/StartAutomating/GitPub/blob/main/LICENSE'
             ReleaseNotes = @'
-## GitPub 0.1.4
+## GitPub 0.1.5:
 
-* Publish-GitPub: Improved publishing error behavior (Fixes #48)
-* Get-GitPubIssue/Get-GitPubRelease:  Linking issues (Fixes #47)
 * Publish-GitPubJekyll:
-  * Improving Date Handling (Fixes #51)
-  * Allowing more filenames (Fixes #52)
-* Providing RunGitPub Job Definition (Fixes #53)
+  * Adding RSS Feed (Fixes #57)
+  * Fixing Summaries (Fixes #56)
+
+---
 
 More history available in the [changelog](https://gitpub.start-automating.com/CHANGELOG/)
 '@
