@@ -1,4 +1,3 @@
-
 Publish-GitPubJekyll
 --------------------
 ### Synopsis
@@ -278,5 +277,3 @@ The output path.  If not provided, will output to _posts in the current director
 Publish-GitPubJekyll [-PostTitle] <String> [-PostBody] <String> [-PostCreationTime] <DateTime> [[-PostAuthor] <String>] [[-PostTag] <String[]>] [[-PostLayout] <String>] [[-SourceUrl] <String>] [-NoSummary] [[-YearlySummary] <String>] [[-YearlySummaryExtension] <String>] [[-MonthlySummary] <String>] [[-MonthlySummaryExtension] <String>] [[-DailySummary] <String>] [[-DailySummaryExtension] <String>] [[-OutputPath] <String>] [<CommonParameters>]
 ```
 ---
-
-
