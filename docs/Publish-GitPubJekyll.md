@@ -166,6 +166,53 @@ and will give them the appropriate permalinks.
 
 
 ---
+#### **NoFeed**
+
+If set, will not generate a feed.
+
+
+
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
+---
+#### **FeedName**
+
+The name of the RSS feed file to generate.
+
+
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 8
+
+> **PipelineInput**:false
+
+
+
+---
+#### **FeedTemplate**
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 9
+
+> **PipelineInput**:false
+
+
+
+---
 #### **YearlySummary**
 
 The content used for a yearly summary
@@ -176,7 +223,7 @@ The content used for a yearly summary
 
 > **Required**: false
 
-> **Position**: 8
+> **Position**: 10
 
 > **PipelineInput**:false
 
@@ -196,7 +243,7 @@ Valid Values:
 
 > **Required**: false
 
-> **Position**: 9
+> **Position**: 11
 
 > **PipelineInput**:false
 
@@ -209,7 +256,7 @@ Valid Values:
 
 > **Required**: false
 
-> **Position**: 10
+> **Position**: 12
 
 > **PipelineInput**:false
 
@@ -222,7 +269,7 @@ Valid Values:
 
 > **Required**: false
 
-> **Position**: 11
+> **Position**: 13
 
 > **PipelineInput**:false
 
@@ -235,7 +282,7 @@ Valid Values:
 
 > **Required**: false
 
-> **Position**: 12
+> **Position**: 14
 
 > **PipelineInput**:false
 
@@ -248,7 +295,7 @@ Valid Values:
 
 > **Required**: false
 
-> **Position**: 13
+> **Position**: 15
 
 > **PipelineInput**:false
 
@@ -265,7 +312,7 @@ The output path.  If not provided, will output to _posts in the current director
 
 > **Required**: false
 
-> **Position**: 14
+> **Position**: 16
 
 > **PipelineInput**:false
 
@@ -274,6 +321,6 @@ The output path.  If not provided, will output to _posts in the current director
 ---
 ### Syntax
 ```PowerShell
-Publish-GitPubJekyll [-PostTitle] <String> [-PostBody] <String> [-PostCreationTime] <DateTime> [[-PostAuthor] <String>] [[-PostTag] <String[]>] [[-PostLayout] <String>] [[-SourceUrl] <String>] [-NoSummary] [[-YearlySummary] <String>] [[-YearlySummaryExtension] <String>] [[-MonthlySummary] <String>] [[-MonthlySummaryExtension] <String>] [[-DailySummary] <String>] [[-DailySummaryExtension] <String>] [[-OutputPath] <String>] [<CommonParameters>]
+Publish-GitPubJekyll [-PostTitle] <String> [-PostBody] <String> [-PostCreationTime] <DateTime> [[-PostAuthor] <String>] [[-PostTag] <String[]>] [[-PostLayout] <String>] [[-SourceUrl] <String>] [-NoSummary] [-NoFeed] [[-FeedName] <String>] [[-FeedTemplate] <String>] [[-YearlySummary] <String>] [[-YearlySummaryExtension] <String>] [[-MonthlySummary] <String>] [[-MonthlySummaryExtension] <String>] [[-DailySummary] <String>] [[-DailySummaryExtension] <String>] [[-OutputPath] <String>] [<CommonParameters>]
 ```
 ---
